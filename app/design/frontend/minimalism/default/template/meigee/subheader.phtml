@@ -1,0 +1,106 @@
+<?php
+$meigee_minimalism_general = MAGE::helper('ThemeOptionsMinimalism')->getThemeOptionsMinimalism('meigee_minimalism_general');
+$meigee_minimalism_design = MAGE::helper('ThemeOptionsMinimalism')->getThemeOptionsMinimalism('meigee_minimalism_design');
+$appearance = $meigee_minimalism_design['appearance'];
+$toTop = $meigee_minimalism_general['otheroptions']['totop'];
+
+/* Font Replacement */
+if ($appearance['font'] == 1): 
+	echo '<link href="//fonts.googleapis.com/css?family=' . str_replace(' ', '+', $appearance['gfont']) . ':200,300,400,500,600,700,800" rel="stylesheet" type="text/css">';
+endif;
+
+echo '<style type="text/css">
+.block-subscribe-popup .indent h3,
+.product-name .sku,
+a.aw-blog-read-more,
+.crosssell h2,
+header.rating-title h2,
+.widget .widget-title h1,
+.widget .widget-title h2,
+.page-title h1,
+.page-title h2,
+.page-title h3,
+.page-title h4,
+.page-title h5,
+.page-title h6,
+header#header .top-cart .cart-empty,
+.product-collateral h2,
+.content_bottom section h3,
+.product-view .product-shop .price-box .price-label,
+#footer h3,
+header#header .top-cart .block-title a span,
+header#header .top-cart .block-content .mini-products-list .product-details .price,
+header#header .top-cart .block-content .subtotal .label,
+.price,
+#topCartContent button,
+#topCartContent .actions a,
+#topCartContent button span,
+#nav li a span,
+#nav-wide li.level0 > a > span,
+.content_bottom button.button span,
+.products-grid .btn-quick-view span span,
+.products-list .btn-quick-view span span,
+aside.sidebar section header h2,
+.block-subscribe strong span,
+.block-tags strong span,
+button.button span,
+aside.sidebar section .block-content .actions a,
+.sorter label,
+.pages li a.previous,
+.pages li a.next,
+.products-list .product-name a,
+.block-wishlist .link-cart,
+.product-name h1,
+.block-related h2,
+#product-options-wrapper dt label,
+.meigee-tabs li a,
+.product-collateral#collateral-accordion h2,
+.catalog-product-view .box-reviews h2,
+.catalog-product-view .box-reviews ul li h6 a,
+#login-holder .page-title h1,
+#login-holder form > p,
+#login-holder .link-box a,
+#login-holder form .fieldset .legend,
+#login-form h2,
+#cart-accordion h3.accordion-title,
+.data-table .product-name a,
+#onepagecheckout_forgotbox .page-title span,
+#onepagecheckout_loginbox .page-title span,
+#onepagecheckout_forgotbox button.button span span,
+#onepagecheckout_loginbox button.button span span,
+.op_block_title,
+#onepagecheckout_orderform  #checkout-review-submit button,
+.opc .step-title, 
+.opc .step-title h2, 
+.opc h3,
+aside.sidebar section.block-progress dt,
+.dashboard .welcome-msg .hello,
+.dashboard .box-title h2,
+.dashboard .box-title h3,
+.dashboard .box-head h2,
+.dashboard .box-head h3,
+.header-slider-container .iosSlider .slider .item p,
+.header-slider-container .iosSlider .slider .item h2,
+.header-slider-container .iosSlider .slider .item h3,
+.widget-latest li h3 a {font-family:'.str_replace(' ', '+', $appearance['gfont']).';}</style>';
+
+/* toTop */
+if ($toTop): ?>
+	<script type="text/javascript">
+		jQuery(window).load(function() {
+			if(!((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/Android/i)))){
+				jQuery().UItoTop({
+					text: "<?php echo $this->__('Top'); ?>"
+				});
+			}
+		});
+	</script>
+<?php endif;
+if($this->getRequest()->getModuleName()=='catalog' && $this->getRequest()->getControllerName()=='product') {
+	$_product = Mage::registry('current_product');
+	if ($_product->getMinimalismPrscrollingimages() == 1) { ?>
+			<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.jscrollpane.min.js')?>"></script>
+			<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.mousewheel.js')?>"></script>
+			<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/jscrollpane.css')?>" media="all">
+	<?php }
+}

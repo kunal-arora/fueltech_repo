@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<root>
+    <cms>
+        <pages>
+            <item>
+                <title>Home Page</title>
+                <identifier>home</identifier>
+                <content><![CDATA[<div class="grid_4 alpha">
+	<header class="page-title">
+		<h1>New Arrivals</h1>
+	</header>
+	{{widget type="meigeewidgetsminimalism/newproducts" template="meigee/meigeewidgetsminimalism/slider.phtml" products_amount="10" visible_products="2" widget_id="1102"}}
+</div>
+<div class="grid_8 omega">
+	<header class="page-title">
+		<h1>On sale</h1>
+	</header>
+	{{widget type="meigeewidgetsminimalism/saleproducts" template="meigee/meigeewidgetsminimalism/slider.phtml" products_amount="10" visible_products="4" widget_id="7384"}}
+</div>
+<div class="clear"></div>
+<hr class="indent-72 white-space">
+<header class="page-title">
+	<h1>Coats</h1>
+</header>
+{{widget type="meigeewidgetsminimalism/newproducts" template="meigee/meigeewidgetsminimalism/slider_2.phtml" products_amount="10" visible_products_2="4" widget_id_2="8076"}}
+<hr class="indent-72 white-space">
+<div class="content_banners">
+	<div class="grid_4 alpha">
+		<a href="#" title="Banner 1" target="_blank">
+			<img src="{{media url="wysiwyg/ban_1.gif"}}" data-srcX2="{{media url="wysiwyg/ban_1@x2.gif"}}" alt="Banner 1">
+		</a>
+	</div>
+	<div class="grid_4">
+		<a href="#" title="Banner 2" target="_blank">
+			<img src="{{media url="wysiwyg/ban_2.gif"}}" data-srcX2="{{media url="wysiwyg/ban_2@x2.gif"}}" alt="Banner 2">
+		</a>
+	</div>
+	<div class="grid_4 omega">
+		<a href="#" title="Banner 3" target="_blank">
+			<img src="{{media url="wysiwyg/ban_3.gif"}}" data-srcX2="{{media url="wysiwyg/ban_3@x2.gif"}}" alt="Banner 3">
+		</a>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="clear"></div>]]></content>
+                <is_active>1</is_active>
+                <sort_order>0</sort_order>
+                <stores>
+                    <item>0</item>
+                </stores>
+                <root_template>one_column</root_template>
+            </item>
+        </pages>
+        <blocks>
+            <item>
+                <title>Minimalism Footer</title>
+                <identifier>minimalism_footer</identifier>
+                <content><![CDATA[{{block type="page/html" block_id="footermap" template="meigee/footermap.phtml"}}
+<div class="container_12">
+	<div class="grid_12">
+		<hr class="indent-72 white-space" />
+		<div class="footer-columns-block">
+			<div class="grid_3 alpha">
+				<h3>Help</h3>
+				<div class="custom-footer-content">
+					<ul>
+						<li><a href="#">About Our Ads</a></li>
+						<li><a href="#">Media Kit</a></li>
+						<li><a href="#">Press Room</a></li>
+						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="#">Your Privacy Rights</a></li>
+						<li><a href="#">Terms of Use</a></li>
+						<li><a href="#">Community Fuidelines</a></li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="grid_3">
+				<h3>Accessories</h3>
+				<div class="custom-footer-content">
+					<ul>
+						<li><a href="#">Jumpsuits / Rompers</a></li>
+						<li><a href="#">Leather</a></li>
+						<li><a href="#">Leggins</a></li>
+						<li><a href="#">Lingerie</a></li>
+						<li><a href="#">Loungewear / Yoga</a></li>
+						<li><a href="#">Maternity</a></li>
+						<li><a href="#">Pants</a></li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="grid_3">
+				<h3>Clothing</h3>
+				<div class="custom-footer-content">
+					<ul>
+						<li><a href="#">Shorts</a></li>
+						<li><a href="#">Skirts</a></li>
+						<li><a href="#">Suit Separates</a></li>
+						<li><a href="#">Sweaters / Knits</a></li>
+						<li><a href="#">Swimwear</a></li>
+						<li><a href="#">Tops</a></li>
+						<li><a href="#">Vests</a></li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="grid_3 omega">
+				<h3>Tweets</h3>
+				<div class="custom-footer-content">
+					<ul>
+						<li><a href="#">Jumpsuits / Rompers</a></li>
+						<li><a href="#">Leather</a></li>
+						<li><a href="#">Leggins</a></li>
+						<li><a href="#">Lingerie</a></li>
+						<li><a href="#">Loungewear / Yoga</a></li>
+						<li><a href="#">Maternity</a></li>
+						<li><a href="#">Pants</a></li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<hr class="indent-72 white-space" />
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="footer_bottom">
+	<div class="container_12">
+		<div class="grid_12">
+			{{block type="page/html" block_id="lang_curr" template="meigee/langcurr.phtml"}}
+			{{block type="page/switch" block_id="store_switcher" template="page/switch/stores.phtml"}}
+			{{widget type="meigeewidgetsminimalism/sociallinks" twitter="http://twitter.com" rss="http://rss.com" facebook="http://facebook.com" googleplus="https://plus.google.com" linkedin="http://linkedin.com" template="meigee/meigeewidgetsminimalism/sociallinks.phtml"}}
+			<address>{{config path="design/footer/copyright"}}</address>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Minimalism Footer About Us</title>
+                <identifier>minimalism_footer_about_us</identifier>
+                <content><![CDATA[<h3>About us</h3>
+<div class="block-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at ipsum felis. Cras non cursus ipsum. Fusce tellus felis, molestie ut sodales ac, varius a nibh. Donec viverra porttitor nulla, et eleifend magna suscipit nec. Proin fermentum turpis vitae orci consectetur, nec gravida dolor tempor. Phasellus luctus auctor aliquam. </div>
+<div class="clear"></div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Minimalism Footer Info</title>
+                <identifier>minimalism_footer_info</identifier>
+                <content><![CDATA[<h3>Minimalism</h3>
+<div class="block-content">
+	<address>3100 West Cary Street Richmond, United States</address>
+	<p class="phone">Call Us: <a href="skype:(555) 839-238-7367?call">(555) 839-238-7367</a>, <a href="skype:(555) 839-238-7368?call">(555) 839-238-7368</a></p>
+	<p class="email"><a href="mailto:minimalism@info.com">minimalism@info.com</a>, <a href="mailto:mini@info.com">mini@info.com</a></p>
+</div>
+<div class="clear"></div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Minimalism Product Custom</title>
+                <identifier>minimalism_product_custom</identifier>
+                <content><![CDATA[<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="meigeeteam">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Minimalism Slide 1</title>
+                <identifier>minimalism_slide_1</identifier>
+                <content><![CDATA[<a href="#"><img src="{{media url="wysiwyg/slider_img.jpg"}}" data-srcX2="{{media url="wysiwyg/slider_img@x2.jpg"}}" alt="" /></a>
+<div class="slide-container slide-skin">
+	<h2>Noteklan loi</h2>
+	<h3>Lookbook</h3>
+	<p>august / september</p>
+</div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Minimalism Slide 2</title>
+                <identifier>minimalism_slide_2</identifier>
+                <content><![CDATA[<a href="#"><img src="{{media url="wysiwyg/slider_img_2.jpg"}}" data-srcX2="{{media url="wysiwyg/slider_img_2@x2.jpg"}}" alt="" /></a>
+<div class="slide-container slide-skin-2">
+	<h2>Virtu pool</h2>
+	<h3>Lookbook</h3>
+	<p>september / november</p>
+</div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Minimalism Slide 3</title>
+                <identifier>minimalism_slide_3</identifier>
+                <content><![CDATA[<a href="#"><img src="{{media url="wysiwyg/slider_img_3.jpg"}}" data-srcX2="{{media url="wysiwyg/slider_img_3@x2.jpg"}}" alt="" /></a>
+<div class="slide-container slide-skin-3">
+	<h2>strong man</h2>
+	<h3>Lookbook</h3>
+	<p>spring collection</p>
+</div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Minimalism Slide 4</title>
+                <identifier>minimalism_slide_4</identifier>
+                <content><![CDATA[<a href="#"><img src="{{media url="wysiwyg/slider_img_4.jpg"}}" data-srcX2="{{media url="wysiwyg/slider_img_4@x2.jpg"}}" alt="" /></a>
+<div class="slide-container slide-skin-4">
+	<h2>denim</h2>
+	<h3>Lookbook</h3>
+	<p>may / june</p>
+</div>]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+			<item>
+                <title>Minimalism Social Links</title>
+                <identifier>minimalism_social_links</identifier>
+                <content><![CDATA[{{widget type="meigeewidgetsminimalism/sociallinks" twitter="http://twitter.com" rss="http://rss.com" facebook="http://facebook.com" googleplus="https://plus.google.com" linkedin="http://linkedin.com" template="meigee/meigeewidgetsminimalism/sociallinks.phtml"}}]]></content>
+                <is_active>1</is_active>
+                <stores>
+                    <item>0</item>
+                </stores>
+            </item>
+        </blocks>
+    </cms>
+</root>

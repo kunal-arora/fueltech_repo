@@ -1,0 +1,95 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2012 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php
+	$meigee_minimalism_general = MAGE::helper('ThemeOptionsMinimalism')->getThemeOptionsMinimalism('meigee_minimalism_general');
+    $customlogo = $meigee_minimalism_general['customlogo'];
+    $mediaurl = MAGE::helper('ThemeOptionsMinimalism')->getThemeOptionsMinimalism('mediaurl');
+	$loginAjaxStatus = $meigee_minimalism_general['loginajax']['status'];
+?>
+<div class="header-wrapper">
+<header id="header" class="main-header">
+	<div class="container_12">
+		<div class="grid_12">
+			<div class="quick-access">
+				<?php
+					$strTokens = explode('<li', $this->getChildHtml('topLinks'));
+					foreach($strTokens as $key => $token){
+						if(strpos($token, 'top-link-wishlist')){
+							if (Mage::app()->getStore()->isCurrentlySecure()){
+								$strTokens[$key] = str_replace('http:', 'https:', $strTokens[$key]);
+							}else{
+								$strTokens[$key] = str_replace('https:', 'http:', $strTokens[$key]);
+							}
+						}
+					}
+					$topLinks = implode('<li', $strTokens);
+					echo $topLinks;
+				?>
+				<dl class="company-links">
+					<dt>
+						<a href="#"><?php echo $this->__('Company') ?></a>
+					</dt>
+					<dd>
+						<div class="list-container">
+							<?php echo $this->getChildHtml('cms_footer_links') ?>
+							<?php echo $this->getChildHtml('footer_links') ?>
+						</div>
+					</dd>
+				</dl>
+				<?php if ($this->getChildHtml('welcome') || $this->getAdditionalHtml()) : ?>
+					<p class="welcome-msg"><span><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></span></p>
+				<?php endif; ?>
+				<?php echo $this->getChildHtml('cart_sidebar') ?>
+				<div class="clear"></div>
+			</div>
+			<?php if ($customlogo['logo_status'] == 0): ?>
+				<h2 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" <?php echo MAGE::helper('ThemeOptionsMinimalism/Retina')->getRetinaData('logo'); ?> alt="<?php echo $this->getLogoAlt() ?>" /></a></h2>
+				<?php else:?>
+				<h2 class="logo"><strong><?php echo $customlogo['logo_alt']; ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $customlogo['logo_alt']; ?>" class="logo"><img src="<?php echo $mediaurl.$customlogo['logo']; ?>" <?php echo MAGE::helper('ThemeOptionsMinimalism/Retina')->getRetinaData('logo_custom'); ?> alt="<?php echo $customlogo['logo_alt']; ?>" /></a></h2>
+			<?php endif; ?>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="topline">
+		<div class="container_12">
+			<div class="grid_12">
+				<?php if ($customlogo['small_logo_status'] == 0): ?>
+					<h2 class="small_logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getSkinUrl('images/small_logo.png') ?>" <?php echo MAGE::helper('ThemeOptionsMinimalism/Retina')->getRetinaData('small_logo'); ?> alt="<?php echo $this->getLogoAlt() ?>" /></a></h2>
+					<?php else:?>
+					<h2 class="small_logo"><strong><?php echo $customlogo['small_logo_alt']; ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $customlogo['small_logo_alt']; ?>" class="logo"><img src="<?php echo $mediaurl.$customlogo['small_logo']; ?>" <?php echo MAGE::helper('ThemeOptionsMinimalism/Retina')->getRetinaData('small_logo_custom'); ?> alt="<?php echo $customlogo['small_logo_alt']; ?>" /></a></h2>
+				<?php endif; ?>
+				<?php echo $this->getChildHtml('topMenu') ?>
+				<div class="menu-button"><span><?php echo MAGE::helper('ThemeOptionsMinimalism')->getIcon('mobilemenu'); ?></span></div>
+				<?php echo $this->getChildHtml('topSearch') ?>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</header>
+</div>
+<?php echo $this->getChildHtml('topContainer'); ?>
+<?php echo $this->getChildHtml('header_slider_container') ?>
+<?php if($loginAjaxStatus): ?>
+	<script type="text/javascript">
+		/* Login ajax */
+		jQuery('.top-link-login').on('click', function(){
+			<?php if (Mage::app()->getStore()->isCurrentlySecure()): ?>
+			ajaxLogin("<?php echo $this->getUrl('meigeeactions/login/', array('_secure'=>true)) ?>", false);
+			<?php else : ?>
+			ajaxLogin("<?php echo $this->getUrl('meigeeactions/login/', array('_secure'=>false)) ?>", false);
+			<?php endif; ?>
+			return false;
+		});
+	</script>
+<?php endif; ?>

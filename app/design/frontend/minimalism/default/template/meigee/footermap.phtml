@@ -1,0 +1,110 @@
+<?php
+/**
+ * Magento
+ *
+ * @category    design
+ * @package     meigeetheme_default
+ * @copyright   Copyright (c) 2012 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+ $meigee_minimalism_general = MAGE::helper('ThemeOptionsMinimalism')->getThemeOptionsMinimalism('meigee_minimalism_general');
+ $sitelayout = $meigee_minimalism_general['layout']['sitelayout'];
+ $footerMap = $meigee_minimalism_general['footer']['map'];
+ $footerMapAbout = $meigee_minimalism_general['footer']['aboutus'];
+ $footerMapInfo = $meigee_minimalism_general['footer']['info'];
+ $footerMapLat = $meigee_minimalism_general['footer']['latitude'];
+ $footerMapLong = $meigee_minimalism_general['footer']['longitude'];
+ $footerMapZoom = $meigee_minimalism_general['footer']['mapzoom'];
+ $footerMapType = $meigee_minimalism_general['footer']['maptype'];
+ $footerMapMarker = $meigee_minimalism_general['footer']['marker'];
+ $footerMapMarkerTitle = $meigee_minimalism_general['footer']['markertitle'];
+?>
+<footer id="footer">
+	<?php if($footerMap): ?>
+	<?php if(!$sitelayout): ?>
+	<div class="content_bottom">
+		<div class="map-wrapper"></div>
+		<div id="map_canvas"></div>
+		<?php endif; ?>
+		<div class="container_12 map">
+			<?php if($sitelayout): ?>
+			<div class="content_bottom">
+			<div class="map-wrapper"></div>
+			<div id="map_canvas"></div>
+			<?php endif; ?>
+			<div class="grid_12">
+				<section class="grid_6 block-about alpha">
+					<div class="indent">
+						<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($footerMapAbout)->toHtml() ?>
+					</div>
+					<div class="clear"></div>
+				</section>
+				<?php echo $this->getChildHtml('footer.newsletter') ?>
+				<?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/footer_subscribe.phtml')->toHtml(); ?>
+				<section class="grid_3 block-address alpha">
+					<div class="indent">
+						<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($footerMapInfo)->toHtml() ?>
+					</div>
+				</section>
+				<button type="submit" title="Find Us" class="button" id="find-us"><span><span><?php echo $this->__('Find Us'); ?></span></span></button>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			<?php if($sitelayout): ?>
+			</div>
+			<?php endif; ?>
+		</div>
+		<div class="clear"></div>
+	<?php if(!$sitelayout): ?>
+	</div>
+	<?php endif; ?>
+	<script type="text/javascript">
+		function initialize(){
+			var myLatlng = new google.maps.LatLng(<?php echo $footerMapLat;?>, <?php echo $footerMapLong;?>);
+			var map_canvas = document.getElementById('map_canvas');
+			var map_options = {
+			  center: myLatlng,
+			  zoom: <?php echo $footerMapZoom;?>,
+			  mapTypeId: google.maps.MapTypeId.<?php echo $footerMapType;?>
+			}
+			var map = new google.maps.Map(map_canvas, map_options)
+			
+			<?php if($footerMapMarker): ?>
+			var marker = new google.maps.Marker({
+				position: myLatlng,
+				map: map,
+				title: '<?php echo $footerMapMarkerTitle; ?>'
+			});
+			<?php endif; ?>
+			setTimeout(function(){
+				jQuery(window).trigger('resize');
+			}, 1000);
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+		
+		var sizeMarker = 0;
+		var currentSize = jQuery(document.body).width();
+		if(currentSize < 480){currentSize = 1;}
+		if(currentSize > 479 && currentSize < 768){currentSize = 2;}
+		if(currentSize > 767 && currentSize < 977){currentSize = 3;}
+		if(currentSize > 1279){currentSize = 4;}
+		
+		jQuery(window).resize(function(){
+			if (jQuery(document.body).width() < 480) {
+				sizeMarker = 1;
+			}
+			if (jQuery(document.body).width() > 479 && jQuery(document.body).width() < 768) {
+				sizeMarker = 2;
+			}
+			if (jQuery(document.body).width() > 767 && jQuery(document.body).width() < 977){
+				sizeMarker = 3;
+			}
+			if (jQuery(document.body).width() > 1279){
+				sizeMarker = 4;
+			}
+			if(currentSize != sizeMarker){
+				initialize();
+				currentSize = sizeMarker;
+			}
+		});
+	</script>
+	<?php endif; ?>
